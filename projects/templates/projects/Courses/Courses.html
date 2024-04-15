@@ -1,0 +1,54 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<main>
+	<section class="hero-section text-center" style="height: 35vh;">
+		<div class="container container--narrow">
+			<div class="hero-section__box"">
+				<h2>All Courses</h2>
+			</div>
+			<div class=" hero-section__search">
+				<a href="{% url 'createCourse' %}" class="btn btn--sub btn--lg">Add Course</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="projectsList">
+		<div class="container">
+			<div class="grid grid--three">
+
+				{% for course in Courses %}
+				<div class="column">
+					<div class="card project">
+						<a href="{% url 'course-profile' course.id %}" class="project">
+							<img class="project__thumbnail" src="{{ course.course_image.url }}" alt="project thumbnail" />
+							<div class="card__body">
+								<h3 class="project__title">{{course.name}}</h3>
+								<p class="project--rating">
+									<span style="font-weight: bold;">{{course.content.count}}</span> Contents
+								</p>
+								<div class="project__tags">
+									<a class="tag tag--pill tag--main manage--btn" href="{% url 'deleteCourse' course.id %}">
+										<ion-icon name="close-circle-outline" class="ion-icon_edit"></ion-icon>Delete
+									</a>
+									<a class="tag tag--pill tag--main manage--btn" href="{% url 'updateCourse' course.id %}">
+										<ion-icon name="create-outline" class="ion-icon_edit"></ion-icon>Edit
+									</a>
+									<span class="tag tag--pill tag--main">
+										<small>Mohaghegh Ardabili University</small>
+									</span>
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
+				{% endfor %}
+
+			</div>
+		</div>
+	</section>
+
+
+</main>
+
+{% endblock %}

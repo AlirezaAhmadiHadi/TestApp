@@ -1,0 +1,58 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<main class="home">
+	<section class="hero-section text-center">
+		<div class="container container--narrow">
+			<div class="hero-section__box">
+				<h2>CONNECT WITH <span>Students</span></h2>
+				<h2>AROUND THE WORLD</h2>
+			</div>
+
+			<div class="hero-section__search">
+				<a href="{% url 'createStudent' %}" class="btn btn--sub btn--lg">Add Student</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="devlist">
+		<div class="container">
+			<div class="grid grid--three">
+
+				{% for student in Students %}
+				<div class="column card">
+					<div class="dev">
+						<a href="{% url 'user-profile' student.id %}" class="card__body">
+							<div class="dev__profile">
+								<img class="avatar avatar--md" src="{{ student.student_image.url }}" alt="image" />
+								<div class="dev__meta">
+									<h3>{{student.name}}</h3>
+									<h5>Computer Engineering</h5>
+								</div>
+							</div>
+
+							<p class="dev__info">
+								Student Number : {{student.studentNumber}}<br>
+								Age : {{student.age}}
+							</p>
+							<div class="dev__skills">
+								<a class="tag tag--pill tag--main manage--btn"
+									href="{% url 'deleteStudent' student.id %}">
+									<ion-icon name="close-circle-outline" class="ion-icon_edit"></ion-icon>Delete
+								</a>
+								<a class="tag tag--pill tag--main manage--btn"
+									href="{% url 'updateStudent' student.id %}">
+									<ion-icon name="create-outline" class="ion-icon_edit"></ion-icon>Edit
+								</a>
+							</div>
+
+						</a>
+					</div>
+				</div>
+				{% endfor %}
+
+			</div>
+		</div>
+	</section>
+</main>
+{% endblock %}

@@ -1,0 +1,39 @@
+.logo_icon {
+    font-size: 40px;
+    color: var(--color-light);
+}
+
+.dev__skills {
+    display: flex;
+}
+
+.manage--btn {
+    margin-right: 0.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.ion-icon_edit {
+    font-size: 15px;
+    margin-right: 3px;
+}
+
+.ion-icon_edit-content {
+    font-size: 15px;
+}
+
+.content--table {
+    display: flex;
+}
+
+.form-header {
+    display: flex;
+    align-items: center;
+}
+
+.form-header--content {
+    margin-left: 5px;
+}
+
+.form__field ul {
+    list-style: none;
+}
